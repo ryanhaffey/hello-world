@@ -29,7 +29,7 @@ if (JOBNAME == 'master') {
         }
         node ()
         {
-            hipchatSend (message: " test message : ${env.JOB_NAME} ${env.BUILD_NUMBER}", token: 6wM31nsncn6Lcfm6DnsTIIX5rjFhXDGViZZpxnHa, room: CI-POC)
+            hipchatSend (message: " test message : ${env.JOB_NAME} ${env.BUILD_NUMBER}", token:6wM31nsncn6Lcfm6DnsTIIX5rjFhXDGViZZpxnHa, room:CI-POC)
             echo "deploying to prod"
         }
     }
