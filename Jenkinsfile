@@ -14,6 +14,8 @@ if (JOBNAME == 'master') {
         node (){
             echo 'Deploying'
             withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ca9e3371-fbc4-4ed3-be39-f478266544fd', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME']]) {
+                sh('git config --global user.email os-bot@onshift.com')
+                sh('git config --global user.name os-bot')
                 sh("git tag -a some_tag -m 'Jenkins'")
                 sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@<REPO> --tags')
             }
