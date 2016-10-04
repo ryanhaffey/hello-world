@@ -1,5 +1,7 @@
 def JOBNAME =  env.JOB_NAME.replaceFirst('.+/', '')
 
+
+
 node () {
     stage('scm') {
         checkout scm
@@ -16,21 +18,18 @@ if (JOBNAME == 'master') {
             withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ca9e3371-fbc4-4ed3-be39-f478266544fd', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME']]) {
                 sh('git config --global user.email os-bot@onshift.com')
                 sh('git config --global user.name os-bot')
-                sh("git tag -a some_tag_1 -m 'Jenkins'")
+                sh("git tag -a ${env.BUILD_NUMBER}_tag -m 'Jenkins'")
                 sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ryanhaffey/hello-world.git --tags')
             }
         }
     }
     stage ('signoff') {
-        //def userInput = input(
-          //  id: 'userInput', message: 'Let\'s promote?', parameters: [
-          //  [$class: 'TextParameterDefinition']
-        //])
         timeout(time:10, unit:'DAYS') {
             input message: "Does the application look good?"
         }
         node ()
         {
+            hipchatSend (message: " test message : ${env.JOB_NAME} ${env.BUILD_NUMBER}", token: 6wM31nsncn6Lcfm6DnsTIIX5rjFhXDGViZZpxnHa, room: CI-POC)
             echo "deploying to prod"
         }
     }
