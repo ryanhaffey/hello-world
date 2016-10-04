@@ -13,7 +13,7 @@ if (JOBNAME == 'master') {
     stage('Deploy') {
         node (){
             echo 'Deploying'
-            gitTag{
+            git{
                 releaseVersion = '0.0.1'
             }
         }
