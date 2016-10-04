@@ -1,6 +1,8 @@
-node {
+node () {
     stage('scm') {
-        scm checkout
+        checkout scm
     }
-    stage('run test')
+    stage('run test') {
+        echo 'testing'
+    }
 }
