@@ -20,7 +20,9 @@ if (JOBNAME == 'master') {
           //  id: 'userInput', message: 'Let\'s promote?', parameters: [
           //  [$class: 'TextParameterDefinition']
         //])
-        input message: "Does the application look good?"
+        timeout(time:10, unit:'DAYS') {
+            input message: "Does the application look good?"
+        }
         node ()
         {
             echo "deploying to prod"
