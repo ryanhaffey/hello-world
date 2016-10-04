@@ -16,13 +16,14 @@ if (JOBNAME == 'master') {
         }
     }
     stage ('signoff') {
-        def userInput = input(
-            id: 'userInput', message: 'Let\'s promote?', parameters: [
-            [$class: 'TextParameterDefinition']
-        ])
+        //def userInput = input(
+          //  id: 'userInput', message: 'Let\'s promote?', parameters: [
+          //  [$class: 'TextParameterDefinition']
+        //])
+        input message: "Does the application look good?"
         node ()
         {
-            echo ("User Input: "+userInput)
+            echo "deploying to prod"
         }
     }
 }
