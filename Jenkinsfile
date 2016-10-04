@@ -29,7 +29,7 @@ if (JOBNAME == 'master') {
         }
         node ()
         {
-            hipchatSend message:"test message" token:6wM31nsncn6Lcfm6DnsTIIX5rjFhXDGViZZpxnHa room:CI-POC
+            hipchatSend room: "CI-POC", token: "6wM31nsncn6Lcfm6DnsTIIX5rjFhXDGViZZpxnHa", message:"test message"
             echo "deploying to prod"
         }
     }
