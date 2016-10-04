@@ -17,7 +17,7 @@ if (JOBNAME == 'master') {
                 sh('git config --global user.email os-bot@onshift.com')
                 sh('git config --global user.name os-bot')
                 sh("git tag -a some_tag -m 'Jenkins'")
-                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/ryanhaffey/hello-world.git --tags')
+                sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ryanhaffey/hello-world.git --tags')
             }
         }
     }
