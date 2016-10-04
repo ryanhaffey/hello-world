@@ -13,6 +13,9 @@ if (JOBNAME == 'master') {
     stage('Deploy') {
         node (){
             echo 'Deploying'
+            gitTag{
+                releaseVersion = '0.0.1'
+            }
         }
     }
     stage ('signoff') {
