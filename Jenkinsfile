@@ -18,7 +18,8 @@ try {
             }
             echo ""
             sh "git config --get remote.origin.url > .git/remote-url"
-            return readFile(".git/remote-url").trim()
+            def remote = readFile(".git/remote-url").trim()
+            echo "${remote}"
         }
         stage('run test') {
             echo 'testing'
