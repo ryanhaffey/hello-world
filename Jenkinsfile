@@ -12,7 +12,10 @@ try {
             sh 'git rev-parse HEAD > GIT_COMMIT'
             def git_commit = readFile('GIT_COMMIT').trim()
             echo "${git_commit}"
-            echo "${env}"
+            sh 'env > env.txt' 
+            for (String i : readFile('env.txt').split("\r?\n")) {
+                println i
+            }
         }
         stage('run test') {
             echo 'testing'
