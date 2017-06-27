@@ -12,10 +12,13 @@ try {
             sh 'git rev-parse HEAD > GIT_COMMIT'
             def git_commit = readFile('GIT_COMMIT').trim()
             echo "${git_commit}"
-            sh 'env > env.txt' 
+            sh 'env > env.txt'
             for (String i : readFile('env.txt').split("\r?\n")) {
                 println i
             }
+            echo ""
+            sh "git config --get remote.origin.url > .git/remote-url"
+            return readFile(".git/remote-url").trim()
         }
         stage('run test') {
             echo 'testing'
