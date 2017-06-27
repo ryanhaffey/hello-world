@@ -12,6 +12,7 @@ try {
             sh 'git rev-parse HEAD > GIT_COMMIT'
             def git_commit = readFile('GIT_COMMIT').trim()
             echo "${git_commit}"
+            echo "${env}"
         }
         stage('run test') {
             echo 'testing'
